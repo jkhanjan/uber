@@ -3,9 +3,18 @@ dotenv.config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
-app.use(cors());
+const connectToDB = require("./db/db");
+const userRoutes = require("./routes/user.routes");
 
-app.get('/', (req, res) => {
-    res.send('hello')
-})
+connectToDB();
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.get("/", (req, res) => {
+  res.send("hello");
+});
+
+app.use('/users', userRoutes)
+
 module.exports = app;
