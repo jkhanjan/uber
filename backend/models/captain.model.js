@@ -47,7 +47,7 @@ const captainSchema = new mongoose.Schema({
     capacity: {
       type: Number,
       required: true,
-      min: [3, "first name must be 3 character"],
+      min: [1, "first name must be 3 character"],
     },
     vehicleType: {
       type: String,
